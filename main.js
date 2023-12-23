@@ -13,13 +13,16 @@ app.use(express.urlencoded({ extended: false }))
 app.get('/', (req, res) => {
   res.redirect('/mainPage')
 })
+
 app.get('/mainPage', (req, res) => {
   res.render('index')
 })
+
 app.post('/generator', (req, res) => {
   const data = req.body
   const password = randomNumber(data)
   console.log(data)
+  
   // console.log(data.exclude.includes("a"))
   res.render('index', { password, data  })
 })
@@ -31,6 +34,9 @@ function randomNumber(data) {
   const string = stringCombo(data)
   let password = ''
   let count = 0
+  if (string.length === 0) {
+    return password += 'There is no valid characters in your selection.'
+  }
   while (count < Number(data.length)) {
     const character = string.charAt(Math.floor(Math.random() * string.length))
     if (excludeWord(data, character)) {
