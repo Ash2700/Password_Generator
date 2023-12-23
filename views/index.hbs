@@ -1,0 +1,94 @@
+<div class="container w-75 my-5 p-3 rounded-2" style="background-color: rgb(251, 251, 251);">
+  <div class="row  ">
+    <span>
+      <h3 class="title">Random Password Generator</h3>
+      <i></i>
+    </span>
+  </div>
+  <hr>
+  <form name="checkItems" action="/generator" method="post" class="container">
+
+    <div class="input-group mb-3 row g-0 my-4">
+      <div class="col-4">
+        <span class="input-group-text" id="basic-addon3">Password Length</span>
+      </div>
+      <div class="col">
+        <input type="number" max="16" min="4" required name="length" value="{{length}}" class="form-control"
+          id="basic-url" aria-describedby="basic-addon3">
+        <label for="basic-url" class="form-label ">
+          <div style="font-size:0.8rem;">Length is available between 4-16</div>
+        </label>
+      </div>
+
+    </div>
+
+    <div class="form-check mb-4  ">
+      <div class="row ">
+        <div class="col-4">
+          <label class="form-check-label" for="flexCheckDisabled">
+            include Lowercase Characters
+          </label>
+        </div>
+        <div class="col-2">
+          <input class="form-check-input" type="checkbox" name="lowercase" id="flexCheckDisabled"> (e.g. abcdef)
+        </div>
+      </div>
+    </div>
+
+    <div class="form-check mb-4 ">
+      <div class="row ">
+        <div class="col-4">
+          <label class="form-check-label" for="flexCheckDisabled">
+            include Uppercase Characters
+          </label>
+        </div>
+        <div class="col-2">
+          <input class="form-check-input" type="checkbox" name="uppercase" id="flexCheckDisabled"> (e.g. ABCDEF)
+        </div>
+      </div>
+    </div>
+    <div class="form-check mb-4  ">
+      <div class="row ">
+        <div class="col-4">
+          <label class="form-check-label" for="flexCheckDisabled">
+            include Numbers
+          </label>
+        </div>
+        <div class="col-2">
+          <input class="form-check-input" name="number" type="checkbox" id="flexCheckDisabled"> (e.g. 123456)
+        </div>
+      </div>
+    </div>
+    <div class="form-check mb-4 ">
+      <div class="row ">
+        <div class="col-4">
+          <label class="form-check-label" for="flexCheckDisabled">
+            include symbols
+          </label>
+        </div>
+        <div class="col-2">
+          <input class="form-check-input" type="checkbox" name="symbols" id="flexCheckDisabled">
+          (e.g.@#$%^)
+        </div>
+      </div>
+    </div>
+
+    <div class="input-group mb-2 row g-0">
+      <div class="col-4">
+        <span class="input-group-text" id="basic-addon3">Exclude Characters</span>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" id="basic-url" name="exclude" aria-describedby="basic-addon3">
+        <label for="basic-url" class="form-label fs-6">
+          <div style="font-size: 0.8rem;">These Characters will not appear in the password</div>
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg">Generate Password</button>
+
+  </form>
+  <hr>
+  {{#if password}}
+  <div class="p-3 mb-2 bg-info text-dark rounded-2" id="showPassword">your password is : {{password}} </div>
+  {{/if}}
+</div>
