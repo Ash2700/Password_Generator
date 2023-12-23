@@ -17,12 +17,14 @@ app.get('/mainPage', (req, res) => {
   res.render('index')
 })
 app.post('/generator', (req, res) => {
-  const data = { length, lowercase, uppercase, number, symbols, exclude } = req.body
+  const data = req.body
   const password = randomNumber(data)
   console.log(data)
   // console.log(data.exclude.includes("a"))
-  res.render('index', { password })
+  res.render('index', { password, data  })
 })
+
+
 
 
 function randomNumber(data) {
