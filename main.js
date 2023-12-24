@@ -17,26 +17,26 @@ app.get('/', (req, res) => {
 app.get('/mainPage', (req, res) => {
   res.render('index')
 })
-
+//得到資料,製造密碼
 app.post('/generator', (req, res) => {
   const data = req.body
   const password = randomNumber(data)
-  console.log(data)
-  
-  // console.log(data.exclude.includes("a"))
-  res.render('index', { password, data  })
+  res.render('index', { password, data })
 })
 
 
 
 
 function randomNumber(data) {
+  //呼叫確認字串組合
   const string = stringCombo(data)
   let password = ''
   let count = 0
+  //排除空陣列
   if (string.length === 0) {
     return password += 'There is no valid characters in your selection.'
   }
+  //製造密碼
   while (count < Number(data.length)) {
     const character = string.charAt(Math.floor(Math.random() * string.length))
     if (excludeWord(data, character)) {
